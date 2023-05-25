@@ -1,0 +1,33 @@
+
+{% load static %}
+{% block title %}User Details{% endblock %}
+{% block background %}{% endblock %}
+{% block body %}
+<center>
+    <h2>User Details</h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'updateprofile' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="fname">Name</label>
+	        <input class="form-control" type="text"  id="fname" name="fname" value="{{up.first_name}}" required="required">
+			<input class="form-control" type="text"  id="lname" name="lname" value="{{up.last_name}}" required="required">
+		</div>
+
+	    <div class="form-group">
+			<label for="contact">Contact</label>
+	        <input type="text"  class="form-control" id="contact" name="contact" value="{{up.phone}}">
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+	        <input type="email" class="form-control" id="email" name="email" value="{{up.email}}"></td>
+		</div>
+		<button type="submit" class="btn btn-info" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+		<a href="profile">view profile</a>
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center>
+{% endblock %}

@@ -1,0 +1,89 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	margin:0;
+padding:15px;
+background: url("../images/b4.jpg");
+background-size:cover;
+background-position:center;
+font-family:sans-serif;
+
+}
+.header {
+	height:10px;
+
+	width: 41%;
+	margin: 90px auto 0px;
+	color: white;
+	background:rgb(20, 20, 20);
+	text-align: center;
+
+	border-bottom: none;
+
+	padding: 20px;
+}
+form, .content {
+
+	width: 40%;
+	margin: 0px auto;
+	padding: 30px;
+
+	 background:rgb(192 200 208 / 68%);
+	border-radius: 0px 0px 10px 10px;
+}
+.input-group {
+
+	margin: 10px 0px 10px 0px;
+}
+
+.input-group label {
+	display: block;
+	text-align: left;
+	margin: 3px;
+	color:rgb(15, 15, 15);
+}
+.input-group input {
+	height: 5%;
+	width: 92%;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	color:white;
+}
+input, textarea {
+  background-color: rgba(54, 60, 66, 0.7);
+
+}
+
+.btn {
+	padding: 10px;
+	font-size: 15px;
+	color: white;
+	background:rgb(18, 18, 19);
+	border: none;
+	border-radius: 5px;
+	width:200px;
+
+}
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label
+ {
+    margin: .4rem 0;
+}
+.stay
+{
+	width:100px;
+
+}
+.date
+{
+	color:white;
+}

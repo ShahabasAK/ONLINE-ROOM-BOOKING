@@ -1,0 +1,47 @@
+{% load static %}
+{% block title %}{% endblock %}
+{% block background %}{% endblock %}
+<link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>PROFILE</h1>
+
+<form role="form" name="viewprofileform" action="{% url 'profile'%}" method="post">
+    {% csrf_token %}
+   <table class="tableprofile">
+       <tr>
+           <th>ID</th>
+           <th>FIRST NAME</th>
+           <th>LAST NAME</th>
+
+           <th>PHONE NUMBER</th>
+           <th>MAIL</th>
+       </tr>
+       <tbody>
+       {% for up in details %}
+       <tr>
+           <td>{{up.reg_id}}</td>
+           <td>{{up.first_name}}</td>
+           <td>{{up.last_name}}</td>
+           <td>{{up.phone}}</td>
+
+           <td>{{up.email}}</td>
+       </tr>
+        {% endfor %}
+       </tbody>
+   </table>
+</form>
+
+<form action="updateprofile" method="get" >
+         <button type="submit">Update Profile</button>
+      </form>
+
+</body>
+</html>
+{% endblock %}

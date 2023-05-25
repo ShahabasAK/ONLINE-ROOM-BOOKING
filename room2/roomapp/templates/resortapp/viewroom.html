@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VIEW ROOM</title>
+</head>
+<body>
+<h2 style="text-align:center">ROOM DETAILS</h2>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+
+
+<form role="form" name="viewroom" action="{'viewroom'}" method="post">
+    {% csrf_token %}
+   <table class="tableadminviewroom" style=" border-style: double">
+       <tr style="background-color: #96D4D4;">
+           <th style=" border-style: double">ROOM ID</th>
+           <th style=" border-style: double">ROOM NAME</th>
+           <th style=" border-style: double">ROOM TYPE</th>
+           <th style=" border-style: double">RATE</th>
+           <th style=" border-style: double">DESCRIPTION</th>
+           <th style=" border-style: double">PHONE</th>
+           <th style=" border-style: double">LOCATION</th>
+           <th style=" border-style: double">IMAGE</th>
+           <th style=" border-style: double">UPDATE</th>
+           <th style=" border-style: double">DELETE</th>
+       </tr>
+       <tbody>
+       {% for p in details %}
+       <tr>
+           <td style=" border-style: double">{{p.room_id}} </td>
+           <td style=" border-style: double">{{p.room_name}}</td>
+           <td style=" border-style: double">{{p.room_type}}</td>
+           <td style=" border-style: double">{{p.rate }}</td>
+           <td style=" border-style: double">{{p.discription}}</td>
+           <td style=" border-style: double">{{p.phone}}</td>
+           <td style=" border-style: double">{{p.location}}</td>
+
+           <td><img src="../static/media/{{p.image}}" height="100px" width="100px"></td>
+           <td style=" border-style: double"><a href="../updateroom/{{ p.room_id }}" >update</a></td>
+           <td style=" border-style: double"><a href="../deleteroom/{{p.room_id}}/">delete</a></td>
+
+       </tr>
+        {% endfor %}
+       </tbody>
+   </table>
+</form>
+
+
+
+
+
+                    </div>
+
+</body>
+</html>

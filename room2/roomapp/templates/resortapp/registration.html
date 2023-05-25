@@ -1,0 +1,219 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="">
+    <title>Registration</title>
+    <link rel="stylesheet" href=" {% static '/css/rege.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form">
+            <header>Registration</header>
+            <form action=" {% url 'registration' %}" method="post" id="registrationForm" >
+                   {% csrf_token %}
+           <div class="field fname">
+            <div class="input-area">
+                <p style="color:red;" id="fnamerror"></p>
+                <input type="text" id="fname" placeholder="First Name" Name="fname"  oninput="validatefname()" required>
+            </div>
+            </div>
+           
+            <div class="field lname">
+                <div class="input-area">
+                       <p style="color:red;" id="lnamerror"></p>
+                    <input type="text" id= "lname" placeholder="Last Name" Name="lname" oninput="validatelname()" required>
+                   
+                </div>
+                </div>
+
+
+
+
+                <div class="field email">
+                    <div class="input-area">
+                         <p style="color:red;" id="eerror"></p>
+                        <input type="text" placeholder="Email" id="email" name="email" oninput="validatemail()" required>
+                 
+                    </div>
+                    </div>
+
+                    <div class="field phone">
+                        <div class="input-area">
+                                <p style="color:red;" id="perror"></p>
+                            <input type="text" placeholder="Phone" id="phone" name="phone" minlength="10" maxlength="10" oninput="validatephone()" required autocomplete="off">
+
+
+                        </div>
+                        </div>
+
+                <div class="field password">
+                        <div class="input-area">
+                            <input type="password" placeholder="Password" id="password" name="password" required>
+                           
+                        </div>
+                        </div>
+                 <div class="field password">
+                    <div class="input-area">
+                         <p style="color:red;" id="passerror"></p>
+                        <input type="password" placeholder="re-password" id="repass" Name="repass" oninput="validatepass()" required>
+
+                    </div>
+                     <p id="demo"></p>
+			<label for="usertype">User Type:</label>
+            <select name = "usertype" id="usertype">
+				<option value = "user">User</option>
+                <option value = "A">HOUSE OWNER</option>
+
+			</select>
+                    </div>
+
+    <input type="submit" class="register" value="Register" id="submit" >
+               
+            </form>
+
+       
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+$(document).ready(function() {
+    $('#registrationForm').submit(function(e) {
+
+  var validationFailed = false;
+
+  if (!validatefname()) {
+    validationFailed = true;
+  } else if (!validatelname()) {
+    validationFailed = true;
+  } else if (!validatemail()) {
+    validationFailed = true;
+  } else if (!validatephone()) {
+    validationFailed = true;
+  } else if (!validatepass()) {
+    validationFailed = true;
+  }
+
+  if (validationFailed) {
+    e.preventDefault();
+    return false;
+  }
+  });
+});
+
+    function validatefname(){
+    var pass = document.getElementById("fname").value;
+        var letters = /^[A-Za-z]+$/;
+        if (fname.value.match(letters)) {
+            document.getElementById("fnamerror").innerHTML = " ";
+            return true;
+        }
+        else {
+            document.getElementById("fnamerror").innerHTML = "First Name must be a letter ";
+            return false;
+        }
+    }
+    function validatelname(){
+    var pass = document.getElementById("lname").value;
+        var letters = /^[A-Za-z]+$/;
+        if (lname.value.match(letters)) {
+            document.getElementById("lnamerror").innerHTML = " ";
+            return true;
+        }
+        else {
+            document.getElementById("lnamerror").innerHTML = "First Name must be a letter ";
+            return false;
+        }
+    }
+    function validatedname() {
+        var pass = document.getElementById("dname").value
+        var letters = /^[A-Za-z]+$/;
+        if (Dname.value.match(letters)) {
+            document.getElementById("derror").innerHTML = " ";
+            return true;
+        }
+        else {
+            document.getElementById("cerror").innerHTML = " must be a letter ";
+            return false;
+        }
+    }
+    function validatecname() {
+        var pass = document.getElementById("cname").value
+        var letters = /^[A-Za-z]+$/;
+        if (cname.value.match(letters)) {
+            document.getElementById("cerror").innerHTML = " ";
+            return true;
+        }
+        else {
+            document.getElementById("cerror").innerHTML = " must be a letter ";
+            return false;
+        }
+    }
+    function validatemail() {
+        var pass = document.getElementById("email").value;
+        var Email = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+        if (email.value.match(Email)) {
+          document.getElementById("eerror").innerHTML = " ";
+            return true;
+        }
+         else {
+            document.getElementById("eerror").innerHTML = " invalid id ";
+            return false;
+        }
+    }
+    function validatepin() {
+        var pass = document.getElementById("pin").value;
+        var num = /^[0-5]+$/;
+
+        if (pincode.value.match(num)) {
+            if (pass.length < 6) {
+                document.getElementById("pinerror").innerHTML = "pincode must contain 6 digit";
+                return false;
+
+            } else {
+                document.getElementById("pinerror").innerHTML = "";
+                return true;
+            }
+        }
+        else {
+            document.getElementById("pinerror").innerHTML = "pincode must be a digit and it contain 6 digit";
+            return false;
+        }
+
+    }
+    function validatephone() {
+        var pass = document.getElementById("phone").value;
+        var phn = /^[0-9]+$/;
+        if (phone.value.match(phn)) {
+            if (pass.length < 10) {
+                document.getElementById("perror").innerHTML = "Mobile Number must contain 10 digit";
+                return false;
+            } else {
+                document.getElementById("perror").innerHTML = "";
+                return true;
+            }
+        }
+        else {
+            document.getElementById("perror").innerHTML = "phone number must be a  digit";
+            return false;
+        }
+
+    }
+ function validatepass() {
+        var pass = document.getElementById("password").value;
+        var rep = document.getElementById("repass").value;
+        if (password.value.match(repass.value)) {
+
+            document.getElementById("passerror").innerHTML = "";
+            return true;
+        } else {
+            document.getElementById("passerror").innerHTML = "Doesnt match";
+            return false;
+        }
+
+    }
+
+
+</script>
+        </body>
+</html>

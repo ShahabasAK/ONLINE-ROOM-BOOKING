@@ -1,0 +1,48 @@
+{% load static %}
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="">
+    <title>Login</title>
+    <link rel="stylesheet" href=" {% static '/css/rege.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form">
+            <header>Log in!</header>
+
+
+            <form action="login" role="form" method="post">
+
+             {% csrf_token %}
+           <div class="field email">
+            <div class="input-area">
+                <input type="text" placeholder="Enter Email" name="email" required>
+              
+            </div>
+            </div>
+           
+            <div class="field password">
+                <div class="input-area">
+                    <input type="password" placeholder="Enter password" name="password" required>
+                   
+                </div>
+                </div>
+
+                
+
+                <input type="submit" value="Login"></input>
+                <a href="registration" style="text-decoration:none; color: peach; font-size: 18px;">registration<p >{% autoescape off %}{{ msg1 }}{% endautoescape %}</p></a>
+
+
+               
+            </form>
+       
+       
+        </div>
+    </div>
+
+</body>
+</html>
